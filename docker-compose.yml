@@ -1,3 +1,4 @@
+# https://django.fun/tutorials/dokerizaciya-django-s-pomoshyu-postgres-gunicorn-i-nginx/
 version: '3'
 
 services:
