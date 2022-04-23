@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: ./dz
+      dockerfile: Dockerfile
+    command: gunicorn dz.wsgi:application --bind 0.0.0.0:8000
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env
+
+  nginx-front:
+    build: ./dz-front
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - nginx-web
+
+  nginx-web:
+    build: ./nginx
+    restart: always
+    ports:
+      - 1377:80
+    depends_on:
+      - web

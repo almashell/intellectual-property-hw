@@ -1,0 +1,13 @@
+version: "3"
+services:
+
+ nginx:
+  container_name: nginx
+  build: .
+  volumes:
+   - ./nginx/nginx.conf:/etc/nginx/conf.d/app.conf
+   - ./public:/static/public
+  ports:
+   - "8080:8080"
+  restart: always
+  image: nginx
